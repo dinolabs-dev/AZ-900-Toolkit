@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>React + Framer Motion via CDN</title>
+  <!-- React -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- Framer Motion -->
+  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background-color: #f0f2f5;
+      color: #333;
+      display: flex;
+      justify-content: center;
+    }
+    #root {
+      width: 100%;
+      max-width: 600px;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/javascript">
+    // Estrazione da Framer Motion
+    const { motion } = window.FramerMotion;
+    const e = React.createElement;
+
+    // Componente React con animazione framer-motion
+    function App() {
+      return e(
+        motion.div,
+        {
+          initial: { opacity: 0, scale: 0.8 },
+          animate: { opacity: 1, scale: 1 },
+          transition: { duration: 0.8, ease: "easeOut" },
+          style: {
+            fontSize: "1.5rem",
+            fontWeight: "bold",
+            color: "#0070f3",
+          },
+        },
+        "Benvenuto in React con Framer Motion via CDN!"
+      );
+    }
+
+    // Render
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(e(App));
+  </script>
+</body>
+</html>
